@@ -91,6 +91,22 @@ c) arr[j..r] elements greater than pivot.
 More information can be found on links above.
 
 
+## [Remove Duplicates II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/)
+This is a two pointer question, meannig, you have to use a left and a right pointer. In this cases, the question can be simplified into, if there isn't duplication, we increase the count (Nondupe) in this case. If then, there's an item (i) that is larger than our current duplication, we can just replace them, otherwise, we will just keep incrementing. 
+
+```java
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int nonDupe = 0;
+        for (int i: nums) {
+            if (nonDupe < 2 || i > nums[nonDupe - 2])
+                nums[nonDupe++] = i;
+        }
+        return nonDupe;
+    }
+}
+```
+
 ## Resources
 - [CS Dojo](https://www.youtube.com/watch?v=86CQq3pKSUw)
 - [Wikipedia](https://en.wikipedia.org/wiki/Maximum_subarray_problem)
