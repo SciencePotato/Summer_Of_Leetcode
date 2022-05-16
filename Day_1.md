@@ -55,7 +55,44 @@ class Solution {
 
 ```
 
+3-way Quick partition in quicksort implement in this problem;
+```java
+class Solution {
+    public void sortColors(int[] nums) {
+        int p1 = 0, p2 = nums.length - 1, index = 0;
+        
+        while (index <= p2) {
+            
+            if (nums[index] == 0) {
+                nums[index] = nums[p1];
+                nums[p1] = 0;
+                p1 ++;
+            } else if (nums[index] == 2) {
+                nums[index] = nums[p2];
+                nums[p2] = 2;
+                p2 --;
+                index --;
+            }
+            
+            index ++;
+        }
+        
+    }
+}
+```
+
+## [3-Way QuickSort (Dutch National Flag)](https://www.geeksforgeeks.org/3-way-quicksort-dutch-national-flag/)
+Instead of using a singular number as our pivot point, the 3-way quicksort implements this algorithm with 2 pivot points, so you'll have a range of array such as the following:
+
+a) arr[l..i] elements less than pivot.  
+b) arr[i+1..j-1] elements equal to pivot.  
+c) arr[j..r] elements greater than pivot.  
+
+More information can be found on links above.
+
+
 ## Resources
 - [CS Dojo](https://www.youtube.com/watch?v=86CQq3pKSUw)
 - [Wikipedia](https://en.wikipedia.org/wiki/Maximum_subarray_problem)
 - [Beginner List](https://leetcode.com/discuss/career/448024/Topic-wise-problems-for-Beginners)
+- [3-Way QuickSort (Dutch National Flag)](https://www.geeksforgeeks.org/3-way-quicksort-dutch-national-flag/)
