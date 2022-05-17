@@ -40,6 +40,7 @@ int binary_search(std::vector<int> arr, int target) {
 }
 ```
 
+This change the script to find for the smallest number, although you could index through it.
 ```cpp
 // Modify to account for Boundary
 int first_not_smaller(std::vector<int> arr, int target) {
@@ -59,3 +60,22 @@ int first_not_smaller(std::vector<int> arr, int target) {
 }
 ```
     
+With this, we essentially check for the first element that is equal to the number, or the numbers that satisfy `<= && >` for our target value.
+```cpp
+int find_first_occurrence(std::vector<int> arr, int target) {
+    int left = 0;
+    int right = arr.size() - 1;
+    int firstOccurence = -1;
+    while (left <= right) {
+        int mid = (left + right) / 2;
+        
+        if (arr[mid] == target) {
+            firstOccurence = mid;
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    }
+    return firstOccurence;
+}
+```
