@@ -79,3 +79,28 @@ int find_first_occurrence(std::vector<int> arr, int target) {
     return firstOccurence;
 }
 ```
+
+This is the binary search for finding the first number of the square root of a given input:
+```cpp
+int square_root(int n) {
+    int left = 0; 
+    int right = n;
+    int bound = 0;
+    while (left <= right) {
+        int mid = (left + right) / 2;
+        if (mid * mid > n) {
+            bound = mid;
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    }
+    return bound - 1;
+}
+```
+
+## Lesson Learned
+### Sliding Window / Two pointer
+The pointer could be virtually anywhere; think where it'll make the most sense. Most of the two pointer questions are easy to recognized, but there are tricky parts, and algorithms. One LeetCode question was too hard to solve for me currently [Cicular Array Loop](https://leetcode.com/problems/circular-array-loop/). This is another two pointer problem, but there are multiple ways of solving it.
+### Binary Search
+For binary search, interpret everything as a true or false statement in which we can then traverse through. For example the first occurance could be `arr[mid] == num` or it could even be the same for the binary cases: `mid * mid > n`.
