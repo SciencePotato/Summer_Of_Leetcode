@@ -1,4 +1,4 @@
-## Sqrt(X) 
+## [Sqrt(X)](https://leetcode.com/problems/sqrtx/)
 The normal solution for any sane human being.
 ```java
 class Solution {
@@ -29,3 +29,29 @@ The binary search method would be.
       return bound;
   }
 ```
+
+## [Subarray Less than K](https://leetcode.com/problems/subarray-product-less-than-k/)
+```java
+public int numSubarrayProductLessThanK(int[] nums, int k) {
+    if(k <= 1) return 0;
+
+
+    int prod = 1, res = 0, left = 0;
+
+
+    for(int right = 0; right < nums.length; right++) {
+
+        prod *= nums[right];
+
+        while(prod >= k) {
+            prod /= nums[left];
+            left++;
+        }
+
+        // This is like Combinatorics (Inclusive-Exclusive principles)
+        res += right - left + 1;
+    }
+    return res;
+}
+```
+Everything about this is a standard sliding window problem. The challenges comes in the last part, since we want to increment the combinations by _X_ amount, but there also exists overlaps within the the _X_, so we want to use the inclusive exclusive principles basically.
